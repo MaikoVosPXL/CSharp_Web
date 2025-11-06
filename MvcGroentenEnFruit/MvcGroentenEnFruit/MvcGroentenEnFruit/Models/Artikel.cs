@@ -8,6 +8,9 @@ namespace MvcGroentenEnFruit.Models
         [Required]
         [StringLength(50)]
         public string ArtikelNaam { get; set; }
+
+        public ICollection<AankoopOrder>? AankoopOrders { get; set; }
+        public ICollection<VerkoopOrder>? VerkoopOrders { get; set; }
     }
 }
 

@@ -8,5 +8,6 @@ namespace MvcGroentenEnFruit.Models
         public int ArtikelId { get; set; }
         public DateTime Datum { get; set; }
         public int Hoeveelheid { get; set; }
+        public Artikel? Artikel { get; set; }
     }
 }
