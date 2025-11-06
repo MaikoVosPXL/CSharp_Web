@@ -3,6 +3,24 @@
 }
 @foreach (string category in Model)
 {
-	<a class="btn btn-outline-secondary btn-block m-2">@category</a>
+	<div class="row">
+		<a class="btn btn-outline-secondary btn-block m-2"
+				asp-action="Index"
+				asp-controller="Home"
+				asp-route-id="1"
+				asp-route-category="@category">
+				@category
+		</a>
+	</div>
 	<br />
 }
+<div class="row">
+	<a class="btn btn-outline-secondary btn-block m-2"
+	   asp-action="Index"
+	   asp-controller="Home"
+	   asp-route-id="1"
+	   asp-route-category="">
+		All
+	</a>
+</div>
+

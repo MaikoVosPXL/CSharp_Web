@@ -4,17 +4,9 @@
 }
 @if (Model != null && Model.Products.Count() > 0)
 {
-    @foreach (var product in Model.Products)
+    @foreach (Product product in Model.Products)
     {
         <partial name="ProductSummary" model="product" />
     }
-    <br/>
-    <div class="row">
-        @for(int i=1; i <= Model.PagingInfo.TotalPages; i++)
-        {
-            <span style="float:left;width:50px">
-               <a border="" href="/home/Index/@i">@i</a>
-            </span>
-        }
-    </div>
+    <page-link paging-info="@Model.PagingInfo"></page-link>
 }

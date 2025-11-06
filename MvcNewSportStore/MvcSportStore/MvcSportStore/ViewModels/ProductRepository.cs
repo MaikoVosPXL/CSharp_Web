@@ -9,26 +9,31 @@ namespace MvcSportStore.ViewModels
         {
             _products = products.ToList();
         }
-        private IEnumerable<Product> GetProducts(int productPage)
+        private IEnumerable<Product> GetProducts(int productPage, string? category)
         {
             return _products
+                .Where(p => category is null || p.Category == category)
                 .OrderBy(p => p.ProductId)
                 .Skip((productPage - 1) * PagingSettings.ProductPagination)
                 .Take(PagingSettings.ProductPagination);
         }
-        private PagingInfo GetPagingInfo(int productPage)
+        private PagingInfo GetPagingInfo(int productPage, string? category)
         {
             var pagingInfo = new PagingInfo();
+            var totalItems = (category is null)
+                ? _products.Count()
+                : _products.Where(p => p.Category == category).Count();
             pagingInfo.CurrentPage = productPage;
+            pagingInfo.Category = category;
             pagingInfo.PageItems = PagingSettings.ProductPagination;
-            pagingInfo.TotalItems = _products.Count();
+            pagingInfo.TotalItems = totalItems;
             return pagingInfo;
         }
-        public ProductModel GetProductModel(int productPage)
+        public ProductModel GetProductModel(int productPage, string? category)
         {
             var productModel = new ProductModel();
-            productModel.Products = GetProducts(productPage);
-            productModel.PagingInfo = GetPagingInfo(productPage);
+            productModel.Products = GetProducts(productPage, category);
+            productModel.PagingInfo = GetPagingInfo(productPage, category);
             return productModel;
         }
     }
