@@ -40,12 +40,3 @@ Elke oefening bevindt zich in een aparte submap met een eigen projectstructuur.
 - Identity Framework
 
 ---
-
-*(Optioneel)*  
-## 🌎 English Summary
-
-This folder contains **exercises and course material** for the **C# Web Development** module.  
-It focuses on building web applications using **ASP.NET Core**, **Razor Pages**, and the **MVC pattern**.
-
----
-
